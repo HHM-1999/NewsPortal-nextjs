@@ -34,6 +34,11 @@ a {
   color: inherit;
   text-decoration: none;
 }
+/* details page */
+.newsDetail{
+  margin-top: 30px;
+}
+
 
 @media (prefers-color-scheme: dark) {
   html {

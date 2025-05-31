@@ -1,6 +1,5 @@
 "use client";
 import { useEffect } from "react";
-import axios from "axios";
 
 const DynamicMetadataClient = () => {
     useEffect(() => {
@@ -40,8 +39,7 @@ const DynamicMetadataClient = () => {
                         // View count (once per session)
                         if (!localStorage.getItem("contentView_" + id)) {
                             localStorage.setItem("contentView_" + id, "1");
-                            axios
-                                .get(`${process.env.NEXT_PUBLIC_API_URL}hit-count/${id}`)
+                            fetch(`${process.env.NEXT_PUBLIC_API_URL}hit-count/${id}`)
                                 .catch((err) => console.error("Hit count error", err));
                         }
 
