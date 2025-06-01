@@ -4,8 +4,10 @@ import getApi from '../../../lib/getApi';
 import postApi from '../../../lib/postApi';
 import Link from 'next/link';
 import LoadMoreNews from './LoadMoreNews';
+import NotFound from '../not-found';
+import Error from '../error';
 
-export async function generateMetadata({ params }) { 
+export async function generateMetadata({ params }) {
     const { catSlug } = await params;
     const CategoryList = await getApi(`category/${catSlug}`);
     const category = CategoryList.category
@@ -38,6 +40,8 @@ const CategoryPage = async ({ params }) => {
     // console.log(catSlug);
     const CategoryList = await getApi(`category/${catSlug}`);
     const category = CategoryList.category
+
+  
     // console.log(category);
     if (category) {
         var catID = category.CategoryID
@@ -56,7 +60,7 @@ const CategoryPage = async ({ params }) => {
         innerContent = list.data
     }
 
-    else false
+    else Error()
     return (
         <>
             <div className="container">
@@ -66,9 +70,9 @@ const CategoryPage = async ({ params }) => {
                         <h1 className='text-center'>{category.CategoryName}</h1>
                     </div>
                     <div className="row">
-                        {innerContent.map((nc,idx) => {
+                        {innerContent.map((nc, idx) => {
                             return (
-                                <div className="col-lg-6"  key={idx}>
+                                <div className="col-lg-6" key={idx}>
                                     <Link href={`/details/${nc.Slug}/${nc.ContentID}`}>
                                         <div className="card mb-3 mt-3">
                                             <img src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`} className="card-img-top img-fluid" alt={nc.DetailsHeading} title={nc.DetailsHeading} />
