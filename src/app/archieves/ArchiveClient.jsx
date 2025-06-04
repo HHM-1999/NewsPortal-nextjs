@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import postApi from "../../../lib/postApi";
 
@@ -16,8 +16,33 @@ export default function ArchiveClient({ initialData, initialCatList }) {
   const fetchArchive = async (params, append = false) => {
     setLoading(true);
     try {
-      const list = await postApi("archive", params);
-      const newData = list.data || [];
+      // Adjust end_date to include full day
+      let adjustedParams = { ...params };
+      if (params.end_date) {
+        const end = new Date(params.end_date);
+        end.setHours(23, 59, 59, 999);
+        adjustedParams.end_date = end.toISOString();
+      }
+
+      const list = await postApi("archive", adjustedParams);
+      let newData = list.data || [];
+
+      // Client-side filtering to keep only items within date range
+      if (adjustedParams.start_date) {
+        const startTime = new Date(adjustedParams.start_date).getTime();
+        const endTime = adjustedParams.end_date
+          ? new Date(adjustedParams.end_date).getTime()
+          : null;
+
+        newData = newData.filter((item) => {
+          const itemTime = new Date(item.created_at).getTime();
+          if (endTime) {
+            return itemTime >= startTime && itemTime <= endTime;
+          }
+          return itemTime >= startTime;
+        });
+      }
+
       if (append) {
         setArchivedata((prev) => [...prev, ...newData]);
         setOffset((prev) => prev + newData.length);
@@ -25,13 +50,18 @@ export default function ArchiveClient({ initialData, initialCatList }) {
         setArchivedata(newData);
         setOffset(newData.length);
       }
-      setHasMore(newData.length === 12);
+
+      // If fewer than limit items returned, no more data to load
+      setHasMore(newData.length === 12 && newData.length > 0);
+
     } catch (error) {
       console.error("Error fetching archive:", error);
     } finally {
       setLoading(false);
     }
   };
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -61,6 +91,7 @@ export default function ArchiveClient({ initialData, initialCatList }) {
       true
     );
   };
+
 
   return (
     <div>
@@ -114,7 +145,7 @@ export default function ArchiveClient({ initialData, initialCatList }) {
           </div>
         </div>
         <div className="text-center my-4">
-          <button type="submit"  className="btn btn-primary" >
+          <button type="submit" className="btn btn-primary" >
             খুঁজুন
           </button>
         </div>
@@ -152,17 +183,17 @@ export default function ArchiveClient({ initialData, initialCatList }) {
         )}
       </div>
 
-      {hasMore && (
+      {hasMore && archivedata.length > 0 && (
         <div className="text-center my-4">
-          <button
-            onClick={handleLoadMore}
-            className="btn btn-primary" 
-            disabled={loading}
-          >
+          <button onClick={handleLoadMore} className="btn btn-primary" disabled={loading}>
             {loading ? "Loading..." : "আরও দেখুন"}
           </button>
         </div>
       )}
+      {/* {!hasMore && archivedata.length > 0 && (
+  <p className="text-center my-4">সব খবর দেখানো হয়েছে।</p>
+)} */}
+
     </div>
   );
 }
