@@ -12,11 +12,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://barta24.com/"), // ← 👈 use your real domain here
+  metadataBase: new URL("https://NewsPortal24.com/"), // ← 👈 use your real domain here
   title: {
-    default: "Barta24",
+    default: "NewsPortal",
   },
-  description: "Barta24 - Breaking News, Latest Headlines & More",
+  description: "NewsPortal - Breaking News, Latest Headlines & More",
 };
 
 export default function RootLayout({ children }) {
