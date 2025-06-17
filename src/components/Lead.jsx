@@ -12,14 +12,31 @@ const Lead = async () => {
     //   console.log(list); // Optional: view result in terminal/server log
 
     return (
-        <div>
-            <h2>Lead</h2>
-            <div className="lead-area">
-                <Link href={"/details/" + LeadData.categorySlug + "/" + LeadData.ContentID}>
-                    <div className="lead-heading">
-                        <h2>{LeadData.DetailsHeading}</h2>
+        <div className='Lead-AreaSection'>
+            <div className="row">
+                <div className="col-lg-9">
+                    <div className="row">
+                        <div className="col-lg-6">
+                            <div class="DTopNews">
+                                <div class="thumbnail">
+                                    <Link href={"/details/" + LeadData.categorySlug + "/" + LeadData.ContentID}>
+                                        <div class="DImageResize">
+                                            <img src={process.env.NEXT_PUBLIC_IMG_PATH + LeadData.ImageBgPath} alt={LeadData.DetailsHeading} title={LeadData.DetailsHeading} class="img-fluid img100" /></div>
+                                        <div class="caption">
+                                            <h3>{LeadData.DetailsHeading}</h3></div>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </Link>
+
+                </div>
+                <div className="col-lg-3">
+                    <div className="Advertisement">
+                        <img src={"../assets/media/advertisement/13982910857184178936.gif"} alt="Radhuni" title='radhuni' />
+                    </div>
+
+                </div>
             </div>
             <div className="lead-area-2">
                 {LeadData2.map((nc) => {

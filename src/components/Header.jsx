@@ -4,6 +4,16 @@ import React from 'react'
 const Header = () => {
     return (
         <>
+        {/* <div className="DheaderArea">
+            <div className="row">
+                <div className="col-lg-12">
+                    <div className="Logo-section">
+                        <img src="" alt="" />
+                        <h1>News Portal</h1>
+                    </div>
+                </div>
+            </div>
+        </div> */}
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="/">News Portal.com</a>

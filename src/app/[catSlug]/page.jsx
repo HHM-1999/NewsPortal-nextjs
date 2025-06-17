@@ -4,35 +4,80 @@ import getApi from '../../../lib/getApi';
 import postApi from '../../../lib/postApi';
 import Link from 'next/link';
 import LoadMoreNews from './LoadMoreNews';
-import NotFound from '../not-found';
 import Error from '../error';
 
+// export async function generateMetadata({ params }) {
+//     const { catSlug } = await params;
+//     const CategoryList = await getApi(`category/${catSlug}`);
+//     const category = CategoryList.category
+//     return {
+//         title: category.CategoryName || "Category - Barta24",
+//         description: category.CategoryName || "Read full news on Barta24.",
+//         openGraph: {
+//             title: category.CategoryName || "Barta24 News",
+//             description: category.CategoryName || "Barta24 - Trusted News",
+//             images: [
+//                 {
+//                     url: ` https://cdn.barta24.com/${category.ImageSmPath}` || "barta24",
+//                     width: 800,
+//                     height: 600,
+//                 },
+//             ],
+//         },
+//         twitter: {
+//             title: category.CategoryName || "Barta24",
+//             description: category.CategoryName || "",
+//             images: [`https://cdn.barta24.com/${category.ImageSmPath}` || "Barta24"],
+//         },
+//     };
+
+// }
 export async function generateMetadata({ params }) {
     const { catSlug } = await params;
-    const CategoryList = await getApi(`category/${catSlug}`);
-    const category = CategoryList.category
-    return {
-        title: category.CategoryName || "Category - Barta24",
-        description: category.CategoryName || "Read full news on Barta24.",
-        openGraph: {
-            title: category.CategoryName || "Barta24 News",
-            description: category.CategoryName || "Barta24 - Trusted News",
-            images: [
-                {
-                    url: ` https://cdn.barta24.com/${category.ImageSmPath}` || "barta24",
-                    width: 800,
-                    height: 600,
-                },
-            ],
-        },
-        twitter: {
-            title: category.CategoryName || "Barta24",
-            description: category.CategoryName || "",
-            images: [`https://cdn.barta24.com/${category.ImageSmPath}` || "Barta24"],
-        },
-    };
 
+    try {
+        const CategoryList = await getApi(`category/${catSlug}`);
+        const category = CategoryList?.category;
+
+        if (!category) {
+           ""
+        }
+
+        return {
+            title: category?.CategoryName || "Category - Barta24",
+            description: category?.CategoryName || "Read full news on Barta24.",
+            openGraph: {
+                title: category?.CategoryName || "Barta24 News",
+                description: category?.CategoryName || "Barta24 - Trusted News",
+                images: [
+                    {
+                        url: category?.ImageSmPath
+                            ? `https://cdn.barta24.com/${category?.ImageSmPath}`
+                            : "https://cdn.barta24.com/default.jpg",
+                        width: 800,
+                        height: 600,
+                    },
+                ],
+            },
+            twitter: {
+                title: category?.CategoryName || "Barta24",
+                description: category?.CategoryName || "",
+                images: [
+                    category?.ImageSmPath
+                        ? `https://cdn.barta24.com/${category?.ImageSmPath}`
+                        : "https://cdn.barta24.com/default.jpg",
+                ],
+            },
+        };
+    } catch (error) {
+        console.error("Error generating metadata for catSlug:", catSlug, error);
+        return {
+            title: "Category - Barta24",
+            description: "Read full news on Barta24.",
+        };
+    }
 }
+
 var limit = 8
 var offset = 0
 const CategoryPage = async ({ params }) => {
@@ -60,17 +105,17 @@ const CategoryPage = async ({ params }) => {
         innerContent = list.data
     }
 
-    else Error()
+    // else Error()
     return (
         <>
             <div className="container">
                 <Header />
                 <div className="row">
                     <div className="col-lg-10 mt-3">
-                        <h1 className='text-center'>{category.CategoryName}</h1>
+                        <h1 className='text-center'>{category?.CategoryName}</h1>
                     </div>
                     <div className="row">
-                        {innerContent.map((nc, idx) => {
+                        {innerContent?.map((nc, idx) => {
                             return (
                                 <div className="col-lg-6" key={idx}>
                                     <Link href={`/details/${nc.Slug}/${nc.ContentID}`}>
