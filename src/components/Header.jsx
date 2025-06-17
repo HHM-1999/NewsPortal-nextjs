@@ -1,62 +1,95 @@
-import Link from 'next/link'
-import React from 'react'
+"use client"
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
 
 const Header = () => {
+    const [isSticky, setIsSticky] = useState(false);
+    const today = new Date().toLocaleDateString('bn-BD', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 100) {
+                setIsSticky(true);
+            } else {
+                setIsSticky(false);
+            }
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+
     return (
         <>
-        {/* <div className="DheaderArea">
-            <div className="row">
-                <div className="col-lg-12">
-                    <div className="Logo-section">
-                        <img src="" alt="" />
-                        <h1>News Portal</h1>
+            {/* Top bar */}
+            <div className="Dheader">
+                <div className="container d-flex justify-content-between align-items-center">
+                    <div className="date-time d-flex align-items-center">
+                        <i className="bi bi-list fs-4 me-3"></i>
+                        <span className="text-muted small">{today}</span>
+                        <i className="bi bi-brightness-high ms-2 text-muted fs-5"></i>
                     </div>
-                </div>
-            </div>
-        </div> */}
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
-                <div className="container-fluid">
-                    <a className="navbar-brand" href="/">News Portal.com</a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link className="nav-link" href="/national">জাতীয়</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" href="/international">আন্তর্জাতিক</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" href="/sports">খেলা</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" href="/economics">অর্থনীতি</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" href="/agriculture">কৃষি</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" href="/feature">ফিচার</Link>
-                            </li>
-                           
-                            <li className="nav-item">
-                                <Link className="nav-link" href="/entertainment">বিনোদন</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" href="/archieves">আর্কাইভ</Link>
-                            </li>
-                        </ul>
+                    <div className="d-flex align-items-center gap-2 form-section">
                         <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
+                            <input className="form-control form-control-sm me-2" type="search" placeholder="search..." />
+                            <button className="btn btn-outline-secondary btn-sm" type="submit">খুঁজুন</button>
                         </form>
                     </div>
                 </div>
-            </nav>
-        </>
-    )
-}
+            </div>
+            {/* Logo center */}
+            <Link href="/">
+                <div className="Logo-area text-center">
+                    <img
+                        src="/assets/media/common/logo2.png"
+                        alt="News Portal.com"
+                        title="News Portal.com"
+                        className="img-fluid"
+                        style={{ width: "270px" }}
+                    />
+                </div>
+            </Link>
 
-export default Header
+
+            {/* Navbar */}
+            {/* <div className="row">
+                <div className="col-lg-12"> */}
+            <nav className="navbar navbar-expand-lg navbar-light bg-white">
+                {/* <div className="container"> */}
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="mainNav">
+                    <ul className="navbar-nav">
+                        {[
+                            { path: "/national", label: "জাতীয়" },
+                            { path: "/international", label: "আন্তর্জাতিক" },
+                            { path: "/sports", label: "খেলা" },
+                            { path: "/economics", label: "অর্থনীতি" },
+                            { path: "/agriculture", label: "কৃষি" },
+                            { path: "/feature", label: "ফিচার" },
+                            { path: "/entertainment", label: "বিনোদন" },
+                            { path: "/archieves", label: "আর্কাইভ" }
+                        ].map((item, idx) => (
+                            <li className="nav-item" key={idx}>
+                                <Link className="nav-link" href={item.path}>{item.label}</Link>
+                            </li>
+                        ))}
+                    </ul>
+
+
+                </div>
+                {/* </div> */}
+            </nav>
+            {/* </div>
+            </div> */}
+
+        </>
+    );
+};
+
+export default Header;
