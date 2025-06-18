@@ -34,8 +34,8 @@ const Lead = async () => {
                                 <div className="CatListWrap">
                                     {LeadData2.map((nc) => {
                                         return (
-                                            <div className="Catlist">
-                                                <Link href={"/details/" + nc.categorySlug + "/" + nc.ContentID} key={nc.ContentID}>
+                                            <div className="Catlist"  key={nc.ContentID} >
+                                                <Link href={"/details/" + nc.categorySlug + "/" + nc.ContentID}>
                                                     <div className="row">
                                                         <div className="col-md-5 col-5">
                                                             <picture><img src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageSmPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} className="img-fluid img100" /></picture>
