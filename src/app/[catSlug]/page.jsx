@@ -40,7 +40,7 @@ export async function generateMetadata({ params }) {
         const category = CategoryList?.category;
 
         if (!category) {
-           ""
+            ""
         }
 
         return {
@@ -86,7 +86,7 @@ const CategoryPage = async ({ params }) => {
     const CategoryList = await getApi(`category/${catSlug}`);
     const category = CategoryList.category
 
-  
+
     // console.log(category);
     if (category) {
         var catID = category.CategoryID
@@ -109,10 +109,12 @@ const CategoryPage = async ({ params }) => {
     return (
         <>
             <div className="container">
-                <Header />
                 <div className="row">
-                    <div className="col-lg-10 mt-3">
-                        <h1 className='text-center'>{category?.CategoryName}</h1>
+                    <div className="col-lg-12 mt-3">
+                        <div className="CatTitle">
+                            <h1 className='text-center'>{category?.CategoryName}</h1>
+                        </div>
+
                     </div>
                     <div className="row">
                         {innerContent?.map((nc, idx) => {

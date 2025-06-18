@@ -31,7 +31,7 @@ const defaultFormData = {
 };
 
 async function getCategories() {
-  const res = await  getApi("category");
+  const res = await getApi("category");
   const data = res.categories
   return data || [];
 }
@@ -44,9 +44,7 @@ const Archieve = async () => {
 
   return (
     <div className="container">
-      <Header />
       <h1 className="text-center">Archieve page</h1>
-
       <ArchiveClient initialData={archivedata} initialCatList={categories} />
     </div>
   );

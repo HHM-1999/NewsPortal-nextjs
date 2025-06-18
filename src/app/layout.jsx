@@ -2,6 +2,8 @@
 // import { Geist_Mono } from 'geist/font/mono'; // Adjust if needed
 import { Tiro_Bangla } from 'next/font/google';
 import "./globals.css";
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 
 // Load fonts
 // const geistSans = Geist({
@@ -42,7 +44,9 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
+        <Header />
         {children}
+        <Footer />
 
         <script
           src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
