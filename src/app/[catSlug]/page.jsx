@@ -116,17 +116,17 @@ const CategoryPage = async ({ params }) => {
                         </div>
 
                     </div>
+                    <div className="category-area">
                     <div className="row">
                         {innerContent?.map((nc, idx) => {
                             return (
                                 <div className="col-lg-6" key={idx}>
                                     <Link href={`/details/${nc.Slug}/${nc.ContentID}`}>
                                         <div className="card mb-3 mt-3">
-                                            <img src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`} className="card-img-top img-fluid" alt={nc.DetailsHeading} title={nc.DetailsHeading} />
+                                            <img src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`} className="card-img-top img-fluid" alt={nc.DetailsHeading} title={nc.DetailsHeading} priority="true" />
                                             <div className="card-body">
-                                                <h5 className="card-title">{nc.DetailsHeading}</h5>
-                                                <p className="card-text">{nc.ContentBrief}</p>
-                                                <p className="card-text"><small className="text-body-secondary">{nc.created_at}</small></p>
+                                                <h5>{nc.DetailsHeading}</h5>
+                                                <p>{nc.ContentBrief}</p>
                                             </div>
                                         </div>
                                     </Link>
@@ -135,14 +135,17 @@ const CategoryPage = async ({ params }) => {
 
                             )
                         })}
-
-                    </div>
-                    {/* Load more component */}
+                           {/* Load more component */}
                     <LoadMoreNews
                         categoryId={catID}
                         topContentIds={top_content_ids}
                         initialOffset={limit}
                     />
+
+                    </div>
+                    </div>
+                 
+                 
                 </div>
 
             </div >

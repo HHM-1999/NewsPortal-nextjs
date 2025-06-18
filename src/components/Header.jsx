@@ -41,6 +41,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
+            <div className={isSticky ? "sticky-navbar shadow-sm" : ""}>
             {/* Logo center */}
             <Link href="/">
                 <div className="Logo-area text-center">
@@ -58,33 +59,36 @@ const Header = () => {
             {/* Navbar */}
             {/* <div className="row">
                 <div className="col-lg-12"> */}
-            <nav className="navbar navbar-expand-lg navbar-light bg-white">
-                {/* <div className="container"> */}
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="mainNav">
-                    <ul className="navbar-nav">
-                        {[
-                            { path: "/national", label: "জাতীয়" },
-                            { path: "/international", label: "আন্তর্জাতিক" },
-                            { path: "/sports", label: "খেলা" },
-                            { path: "/economics", label: "অর্থনীতি" },
-                            { path: "/agriculture", label: "কৃষি" },
-                            { path: "/feature", label: "ফিচার" },
-                            { path: "/entertainment", label: "বিনোদন" },
-                            { path: "/archieves", label: "আর্কাইভ" }
-                        ].map((item, idx) => (
-                            <li className="nav-item" key={idx}>
-                                <Link className="nav-link" href={item.path}>{item.label}</Link>
-                            </li>
-                        ))}
-                    </ul>
+            
+                <nav className="navbar navbar-expand-lg navbar-light bg-white">
+                    {/* <div className="container"> */}
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="mainNav">
+                        <ul className="navbar-nav">
+                            {[
+                                { path: "/national", label: "জাতীয়" , },
+                                { path: "/international", label: "আন্তর্জাতিক" },
+                                { path: "/sports", label: "খেলা" },
+                                { path: "/economics", label: "অর্থনীতি" },
+                                { path: "/agriculture", label: "কৃষি" },
+                                { path: "/feature", label: "ফিচার" },
+                                { path: "/entertainment", label: "বিনোদন" },
+                                { path: "/archieves", label: "আর্কাইভ" }
+                            ].map((item, idx) => (
+                                <li className="nav-item" key={idx}>
+                                    <Link className="nav-link" href={item.path} prefetch={true}>{item.label}</Link>
+                                </li>
+                            ))}
+                        </ul>
 
 
-                </div>
-                {/* </div> */}
-            </nav>
+                    </div>
+                    {/* </div> */}
+                </nav>
+            </div>
+
             {/* </div>
             </div> */}
 

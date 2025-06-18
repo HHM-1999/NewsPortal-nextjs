@@ -44,30 +44,22 @@ const LoadMoreNews = ({ categoryId, topContentIds, initialOffset }) => {
         <>
             {newsList.map((nc, idx) => (
                 <div className="col-lg-6" key={idx}>
-                    <Link href={`/details/${nc.Slug}/${nc.ContentID}`}>
-                        <div className="card mb-3 mt-3">
-                            <img
-                                src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`}
-                                className="card-img-top img-fluid"
-                                alt={nc.DetailsHeading}
-                                title={nc.DetailsHeading}
-                            />
-                            <div className="card-body">
-                                <h5 className="card-title">{nc.DetailsHeading}</h5>
-                                <p className="card-text">{nc.ContentBrief}</p>
-                                <p className="card-text">
-                                    <small className="text-body-secondary">{nc.created_at}</small>
-                                </p>
-                            </div>
+                <Link href={`/details/${nc.Slug}/${nc.ContentID}`}>
+                    <div className="card mb-3 mt-3">
+                        <img src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`} className="card-img-top img-fluid" alt={nc.DetailsHeading} title={nc.DetailsHeading} priority="true" />
+                        <div className="card-body">
+                            <h5>{nc.DetailsHeading}</h5>
+                            <p>{nc.ContentBrief}</p>
                         </div>
-                    </Link>
-                </div>
+                    </div>
+                </Link>
+            </div>
             ))}
 
             {hasMore && (
-                <div className="col-12 text-center my-4">
+                <div className="col-12 text-center my-4 loadMorebtn">
                     <button className="btn btn-primary" onClick={loadMore} disabled={loading}>
-                        {loading ? 'Loading...' : 'Load More'}
+                        {loading ? 'Loading...' : 'আরো দেখুন'}
                     </button>
                 </div>
             )}

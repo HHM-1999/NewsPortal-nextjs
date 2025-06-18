@@ -5,7 +5,7 @@ import SocialShare from "./SocialShare";
 import Head from "next/head";
 // Generate dynamic metadata for each content page
 export async function generateMetadata({ params }) {
-    const {  id } = await params;
+    const { id } = await params;
     const content = await getApi(`content-details/${id}`);
     const contentList = content.data[0]
     const data = contentList
@@ -41,7 +41,7 @@ const page = async ({ params }) => {
     const content = await getApi(`content-details/${id}`);
 
     const contentList = content.data
-    const data= contentList.map((data)=>{return (data)})
+    const data = contentList.map((data) => { return (data) })
     // console.log(data[0].DetailsHeading);
 
     if (!content) {
@@ -79,65 +79,69 @@ const page = async ({ params }) => {
                 />
             </Head>
             <div className="container" style={{ padding: "20px" }}>
-                <Header />
                 <DynamicMetadataClient />
-                {contentList.map((nc) => (
-                    <div
-                        className="newsDetail"
-                        key={nc.ContentID}
-                        id={nc.ContentID}
-                        data-title={nc.DetailsHeading}
-                        data-image={`https://cdn.barta24.com/${nc.ImageSmPath}`}
-                    >
-                        <h1>{nc.DetailsHeading}</h1>
-                        <SocialShare title={nc.DetailsHeading} contentID={nc.ContentID} />
+                <div className="row">
+                    <div className="col-lg-10 m-auto">
+                        {contentList.map((nc) => (
+                            <div
+                                className="newsDetail"
+                                key={nc.ContentID}
+                                id={nc.ContentID}
+                                data-title={nc.DetailsHeading}
+                                data-image={`https://cdn.barta24.com/${nc.ImageSmPath}`}
+                            >
+                                <h1>{nc.DetailsHeading}</h1>
+                                <SocialShare title={nc.DetailsHeading} contentID={nc.ContentID} />
 
-                        {nc.VideoID !== null && nc.VideoID !== '' && nc.ShowVideo === 1 ? (
-                            <div className={nc.Tags === null ? "col-sm-12 video-container mt-2" : "col-sm-12 video-container"}>
-                                {nc.VideoType === "youtube" ? (
-                                    <iframe className="embed-responsive-item" title="youtube-video"
-                                        src={`https://www.youtube.com/embed/${nc.VideoID}?autoplay=0`} frameBorder="0"
-                                        allowFullScreen></iframe>
-                                ) : nc.VideoType === "vimeo" ? (
-                                    <iframe title="vimeo-video" src={`https://player.vimeo.com/video/${nc.VideoID}`}
-                                        frameBorder="0" allowFullScreen></iframe>
-                                ) : nc.VideoType === "facebook" ? (
-                                    <iframe title="facebook-video"
-                                        src={`https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebookapp%2Fvideos%2F${nc.VideoID}%2F&show_text=0&width=560`}
-                                        width="560" height="315" style={{ border: "none", overflow: "hidden" }} scrolling="no"
-                                        frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                                        allowFullScreen></iframe>
-                                ) : nc.VideoType === "instagram" ? (
-                                    <iframe className="embed-responsive-item" title="instagram-video"
-                                        src={`//instagram.com/p/${nc.VideoID}/embed`} width="100%" frameBorder="0"
-                                        scrolling="no" allowTransparency="true"></iframe>
-                                ) : null}
-                            </div>
-                        ) : (
-                            <div className="DTopImg">
-                                <div className="Details">
-                                    <a data-fancybox="" data-caption={nc.DetailsHeading}
-                                        href={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`}
-                                        title={nc.DetailsHeading}>
-                                        <picture>
-                                            <img src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`}
-                                                alt={nc.DetailsHeading} title={nc.DetailsHeading}
-                                                className="img-fluid img100" />
-                                        </picture>
-                                    </a>
-                                </div>
-                                <div className="DetailsTopCap">
-                                    <p className="DTopImgCaption">{nc.ImageBgPathCaption}</p>
-                                </div>
-                            </div>
-                        )}
+                                {nc.VideoID !== null && nc.VideoID !== '' && nc.ShowVideo === 1 ? (
+                                    <div className={nc.Tags === null ? "col-sm-12 video-container mt-2" : "col-sm-12 video-container"}>
+                                        {nc.VideoType === "youtube" ? (
+                                            <iframe className="embed-responsive-item" title="youtube-video"
+                                                src={`https://www.youtube.com/embed/${nc.VideoID}?autoplay=0`} frameBorder="0"
+                                                allowFullScreen></iframe>
+                                        ) : nc.VideoType === "vimeo" ? (
+                                            <iframe title="vimeo-video" src={`https://player.vimeo.com/video/${nc.VideoID}`}
+                                                frameBorder="0" allowFullScreen></iframe>
+                                        ) : nc.VideoType === "facebook" ? (
+                                            <iframe title="facebook-video"
+                                                src={`https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebookapp%2Fvideos%2F${nc.VideoID}%2F&show_text=0&width=560`}
+                                                width="560" height="315" style={{ border: "none", overflow: "hidden" }} scrolling="no"
+                                                frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                                                allowFullScreen></iframe>
+                                        ) : nc.VideoType === "instagram" ? (
+                                            <iframe className="embed-responsive-item" title="instagram-video"
+                                                src={`//instagram.com/p/${nc.VideoID}/embed`} width="100%" frameBorder="0"
+                                                scrolling="no" allowTransparency="true"></iframe>
+                                        ) : null}
+                                    </div>
+                                ) : (
+                                    <div className="DTopImg">
+                                        <div className="Details">
+                                            <a data-fancybox="" data-caption={nc.DetailsHeading}
+                                                href={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`}
+                                                title={nc.DetailsHeading}>
+                                                <picture>
+                                                    <img src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`}
+                                                        alt={nc.DetailsHeading} title={nc.DetailsHeading}
+                                                        className="img-fluid img100" />
+                                                </picture>
+                                            </a>
+                                        </div>
+                                        <div className="DetailsTopCap">
+                                            <p className="DTopImgCaption">{nc.ImageBgPathCaption}</p>
+                                        </div>
+                                    </div>
+                                )}
 
-                        <div
-                            dangerouslySetInnerHTML={{ __html: nc.ContentDetails }}
-                            style={{ marginTop: "20px" }}
-                        />
+                                <div
+                                    dangerouslySetInnerHTML={{ __html: nc.ContentDetails }}
+                                    style={{ marginTop: "20px" }}
+                                />
+                            </div>
+                        ))}
                     </div>
-                ))}
+                </div>
+
 
 
             </div>

@@ -22,8 +22,8 @@ const Lead = async () => {
                                 <div className="DTopNews">
                                     <div className="thumbnail">
                                         <Link href={"/details/" + LeadData.categorySlug + "/" + LeadData.ContentID}>
-                                            <div className="DImageResize">
-                                                <img src={process.env.NEXT_PUBLIC_IMG_PATH + LeadData.ImageBgPath} alt={LeadData.DetailsHeading} title={LeadData.DetailsHeading} className="img-fluid img100" /></div>
+                                            <div className="DImageResize"> 
+                                                <img src={process.env.NEXT_PUBLIC_IMG_PATH + LeadData.ImageBgPath} alt={LeadData.DetailsHeading} title={LeadData.DetailsHeading} className="img-fluid img100" priority="true" /></div>
                                             <div className="caption">
                                                 <h3>{LeadData.DetailsHeading}</h3></div>
                                         </Link>
@@ -38,7 +38,7 @@ const Lead = async () => {
                                                 <Link href={"/details/" + nc.categorySlug + "/" + nc.ContentID}>
                                                     <div className="row">
                                                         <div className="col-md-5 col-5">
-                                                            <picture><img src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageSmPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} className="img-fluid img100" /></picture>
+                                                            <picture><img src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageSmPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} className="img-fluid img100" priority="true" /></picture>
                                                         </div>
                                                         <div className="col-md-7 col-7">
                                                             <h3 className="Title">{nc.DetailsHeading}</h3>
@@ -54,7 +54,7 @@ const Lead = async () => {
                     </div>
                     <div className="col-lg-3">
                         <div className="Advertisement">
-                            <img src={"../assets/media/advertisement/13982910857184178936.gif"} alt="Radhuni" title='radhuni' />
+                            <img src={"../assets/media/advertisement/13982910857184178936.gif"} alt="Radhuni" title='radhuni' priority="true" />
                         </div>
                     </div>
                 </div>
