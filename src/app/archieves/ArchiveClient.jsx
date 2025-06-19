@@ -98,6 +98,8 @@ export default function ArchiveClient({ initialData, initialCatList }) {
       <form className="form-inline" onSubmit={handleSubmit}>
         <div className="form-group clearfix">
           <div className="row">
+            <div className="col-lg-10 m-auto">
+            <div className="row">
             <div className="col-sm-4 my-2">
               <label htmlFor="start_date">তারিখ হতে :</label>
               <input
@@ -143,6 +145,9 @@ export default function ArchiveClient({ initialData, initialCatList }) {
               </select>
             </div>
           </div>
+            </div>
+          </div>
+
         </div>
         <div className="text-center my-4">
           <button type="submit" className="btn btn-primary" >
@@ -150,49 +155,39 @@ export default function ArchiveClient({ initialData, initialCatList }) {
           </button>
         </div>
       </form>
-
-      <div className="row">
-        {loading && archivedata.length === 0 ? (
-          <p className="text-center">Loading...</p>
-        ) : archivedata.length === 0 ? (
-          <p className="text-center">No data found</p>
-        ) : (
-          archivedata.map((nc, idx) => (
-            <div className="col-lg-6" key={idx}>
-              <Link href={`/details/${nc.Slug}/${nc.ContentID}`}>
-                <div className="card mb-3 mt-3">
-                  <img
-                    src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`}
-                    className="card-img-top img-fluid"
-                    alt={nc.DetailsHeading}
-                    title={nc.DetailsHeading}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{nc.DetailsHeading}</h5>
-                    <p className="card-text">{nc.ContentBrief}</p>
-                    <p className="card-text">
-                      <small className="text-body-secondary">
-                        {nc.created_at}
-                      </small>
-                    </p>
+      <div className="category-area">
+        <div className="row">
+          {loading && archivedata.length === 0 ? (
+            <p className="text-center">Loading...</p>
+          ) : archivedata.length === 0 ? (
+            <p className="text-center">No data found</p>
+          ) : (
+            archivedata.map((nc, idx) => (
+              <div className="col-lg-6" key={idx}>
+                <Link href={`/details/${nc.Slug}/${nc.ContentID}`}>
+                  <div className="card mb-3 mt-3">
+                    <img src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`} className="card-img-top img-fluid" alt={nc.DetailsHeading} title={nc.DetailsHeading} priority="true" />
+                    <div className="card-body">
+                      <h5>{nc.DetailsHeading}</h5>
+                      <p>{nc.ContentBrief}</p>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </div>
-          ))
-        )}
+                </Link>
+              </div>
+            ))
+          )}
+        </div>
       </div>
-
       {hasMore && archivedata.length > 0 && (
-        <div className="text-center my-4">
-          <button onClick={handleLoadMore} className="btn btn-primary" disabled={loading}>
-            {loading ? "Loading..." : "আরও দেখুন"}
+        <div className="col-12 text-center my-4 loadMorebtn">
+          <button className="btn btn-primary" onClick={handleLoadMore} disabled={loading}>
+            {loading ? 'Loading...' : 'আরো দেখুন'}
           </button>
         </div>
       )}
-      {/* {!hasMore && archivedata.length > 0 && (
-  <p className="text-center my-4">সব খবর দেখানো হয়েছে।</p>
-)} */}
+      {!hasMore && archivedata.length > 0 && (
+        <p className="text-center my-4">সব খবর দেখানো হয়েছে।</p>
+      )}
 
     </div>
   );

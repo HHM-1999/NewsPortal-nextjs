@@ -44,7 +44,14 @@ const Archieve = async () => {
 
   return (
     <div className="container">
-      <h1 className="text-center">Archieve page</h1>
+      <div className="row">
+        <div className="col-lg-12 mt-3">
+          <div className="CatTitle">
+            <h1 className='text-center'>আর্কাইভ</h1>
+          </div>
+
+        </div>
+      </div>
       <ArchiveClient initialData={archivedata} initialCatList={categories} />
     </div>
   );

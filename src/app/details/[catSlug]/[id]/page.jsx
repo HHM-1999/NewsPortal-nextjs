@@ -133,7 +133,7 @@ const page = async ({ params }) => {
                                     </div>
                                 )}
 
-                                <div
+                                <div className="Content-Details"
                                     dangerouslySetInnerHTML={{ __html: nc.ContentDetails }}
                                     style={{ marginTop: "20px" }}
                                 />

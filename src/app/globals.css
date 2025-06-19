@@ -85,7 +85,21 @@ picture img {
 .page-bangla {
   background-color: #f7f7f7;
 }
-
+label{
+  font-family: var(--font-tiro-bangla);
+  margin-bottom: 0;
+  font-size: 17px;
+  line-height: 26px;
+  letter-spacing: -0.2px;
+  font-weight: 500;
+  padding-left: 2px !important;
+}
+.form-control {
+  font-family: var(--font-tiro-bangla)
+}
+.form-inline  button{
+  font-family: var(--font-tiro-bangla)
+}
 /* Header  */
 .Logo-section img {
   width: 275px;
@@ -270,11 +284,33 @@ picture img {
 /* details page */
 .newsDetail {
   margin-top: 30px;
+  border-bottom: 2px solid #eee;padding-top: 10px;
 }
 
 .form-section button {
   font-family: var(--font-tiro-bangla);
 }
+.DTopImgCaption {
+	font-size: 16px;
+	padding: 10px 0;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+	color: #555;
+  font-family: var(--font-tiro-bangla);
+}
+.Content-Details p {
+  font-size: 20px !important;
+  line-height: 26px !important;
+	text-align: justify !important;
+	color: #000 !important;
+  font-family: var(--font-tiro-bangla) !important;}
+  .Content-Details p span{
+    font-size: 18px !important;
+    line-height: 26px !important;
+    text-align: justify !important;
+    color: #222 !important;
+    font-family: var(--font-tiro-bangla) !important;
+  }
 
 /* Category */
 .CatTitle{

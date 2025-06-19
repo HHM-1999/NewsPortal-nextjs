@@ -71,7 +71,7 @@ const Header = () => {
                                 { path: "/national", label: "জাতীয়" , },
                                 { path: "/international", label: "আন্তর্জাতিক" },
                                 { path: "/sports", label: "খেলা" },
-                                { path: "/economics", label: "অর্থনীতি" },
+                                { path: "/finance-and-trade", label: "অর্থ-বাণিজ্য" },
                                 { path: "/agriculture", label: "কৃষি" },
                                 { path: "/feature", label: "ফিচার" },
                                 { path: "/entertainment", label: "বিনোদন" },
