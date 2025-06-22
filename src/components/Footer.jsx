@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
-
+import Logo from '../assets/media/common/logoWhiteNews.png'
+import Image from 'next/image';
 const Footer = () => {
     return (
         <footer className="bg-dark text-light pt-4 mt-5">
@@ -12,8 +13,8 @@ const Footer = () => {
                         {/* <h5>News Portal</h5> */}
                         <Link href="/">
                             <div className="Logo-area">
-                                <img
-                                    src="/assets/media/common/logoWhiteNews.png"
+                                <Image
+                                    src={Logo}
                                     alt="News Portal.com"
                                     title="News Portal.com"
                                     className="img-fluid"

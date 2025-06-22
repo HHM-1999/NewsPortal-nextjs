@@ -3,6 +3,7 @@ import React from 'react'
 import postApi from '../../../lib/postApi';
 import Link from 'next/link';
 import LoadMoreNews from './LoadMoreNews';
+import Image from 'next/image';
 
 export const metadata = {
 
@@ -45,7 +46,7 @@ const Archieve = async () => {
                         <div className="col-lg-6" key={idx}>
                             <Link href={`/details/${nc.Slug}/${nc.ContentID}`}>
                                 <div className="card mb-3 mt-3">
-                                    <img src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`} className="card-img-top img-fluid" alt={nc.DetailsHeading} title={nc.DetailsHeading} />
+                                    <Image src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`} className="card-img-top img-fluid" alt={nc.DetailsHeading} title={nc.DetailsHeading} />
                                     <div className="card-body">
                                         <h5 className="card-title">{nc.DetailsHeading}</h5>
                                         <p className="card-text">{nc.ContentBrief}</p>

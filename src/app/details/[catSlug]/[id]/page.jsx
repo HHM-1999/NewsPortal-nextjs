@@ -3,6 +3,7 @@ import getApi from "../../../../../lib/getApi";
 import DynamicMetadataClient from "./DynamicMetadataClient";
 import SocialShare from "./SocialShare";
 import Head from "next/head";
+import Image from "next/image";
 // Generate dynamic metadata for each content page
 export async function generateMetadata({ params }) {
     const { id } = await params;
@@ -121,9 +122,11 @@ const page = async ({ params }) => {
                                                 href={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`}
                                                 title={nc.DetailsHeading}>
                                                 <picture>
-                                                    <img src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`}
+                                                    <Image src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`}
                                                         alt={nc.DetailsHeading} title={nc.DetailsHeading}
-                                                        className="img-fluid img100" />
+                                                        width={400}
+                                                        height={250}
+                                                        style={{ width: '100%', height: 'auto', objectFit: 'cover',position:"relative" }}/>
                                                 </picture>
                                             </a>
                                         </div>

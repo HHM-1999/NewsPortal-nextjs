@@ -9,7 +9,7 @@ export default function Error({ error, reset }) {
   }, [error]);
 
   return (
-    <div className="text-center my-10">
+    <div className="text-center my-10 mt-5">
       <h1 className="text-3xl font-bold text-red-600">500 - একটি ত্রুটি ঘটেছে</h1>
       <p className="mt-4">কিছু ভুল হয়েছে। পরে আবার চেষ্টা করুন।</p>
       <button

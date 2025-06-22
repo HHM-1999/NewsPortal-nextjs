@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const limit = 8;
 
@@ -49,7 +50,7 @@ const LoadMoreNews = ({ initialOffset }) => {
                 <div className="col-lg-6" key={idx}>
                     <Link href={`/details/${nc.Slug}/${nc.ContentID}`}>
                         <div className="card mb-3 mt-3">
-                            <img
+                            <Image
                                 src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`}
                                 className="card-img-top img-fluid"
                                 alt={nc.DetailsHeading}

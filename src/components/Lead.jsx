@@ -1,17 +1,16 @@
 import React from 'react';
 import getApi from '../../lib/getApi';
 import Link from 'next/link';
+import Image from 'next/image';
+import Ads from '../assets/media/advertisement/13982910857184178936.gif'
 
 let LeadData = {};
 let LeadData2 = [];
-let LeadData3 = [];
 const Lead = async () => {
 
     const list = await getApi('home-json-bn/generateLead.json');
     LeadData = list[0];
     LeadData2 = list.slice(1, 4);
-    LeadData3 = list.slice(4, 7)
-
     return (
         <div className='Lead-AreaSection'>
             <div className="container">
@@ -22,8 +21,8 @@ const Lead = async () => {
                                 <div className="DTopNews">
                                     <div className="thumbnail">
                                         <Link href={"/details/" + LeadData.categorySlug + "/" + LeadData.ContentID}>
-                                            <div className="DImageResize"> 
-                                                <img src={process.env.NEXT_PUBLIC_IMG_PATH + LeadData.ImageBgPath} alt={LeadData.DetailsHeading} title={LeadData.DetailsHeading} className="img-fluid img100" priority="true" /></div>
+                                            <div className="DImageResize">
+                                                <Image src={process.env.NEXT_PUBLIC_IMG_PATH + LeadData.ImageBgPath} alt={LeadData.DetailsHeading} title={LeadData.DetailsHeading}  priority="true" placeholder={undefined} style={{ width: '100%', height: 'auto',position:"relative",aspectRatio: "1.78"}} width={800} height={450} /></div>
                                             <div className="caption">
                                                 <h3>{LeadData.DetailsHeading}</h3></div>
                                         </Link>
@@ -34,11 +33,11 @@ const Lead = async () => {
                                 <div className="CatListWrap">
                                     {LeadData2.map((nc) => {
                                         return (
-                                            <div className="Catlist"  key={nc.ContentID} >
+                                            <div className="Catlist" key={nc.ContentID} >
                                                 <Link href={"/details/" + nc.categorySlug + "/" + nc.ContentID}>
                                                     <div className="row">
                                                         <div className="col-md-5 col-5">
-                                                            <picture><img src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageSmPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} className="img-fluid img100" priority="true" /></picture>
+                                                            <picture><Image src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageSmPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} style={{ width: '100%', height: 'auto',position:"relative" }} priority="true"  width={120} height={67} /></picture>
                                                         </div>
                                                         <div className="col-md-7 col-7">
                                                             <h3 className="Title">{nc.DetailsHeading}</h3>
@@ -54,7 +53,7 @@ const Lead = async () => {
                     </div>
                     <div className="col-lg-3">
                         <div className="Advertisement">
-                            <img src={"../assets/media/advertisement/13982910857184178936.gif"} alt="Radhuni" title='radhuni' priority="true" />
+                            <Image src={Ads} alt="Radhuni" unoptimized title='radhuni' priority="true" />
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,8 @@
 "use client"
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import Logo from '../assets/media/common/logo2.png'
+import Image from 'next/image';
 
 const Header = () => {
     const [isSticky, setIsSticky] = useState(false);
@@ -45,8 +47,8 @@ const Header = () => {
             {/* Logo center */}
             <Link href="/">
                 <div className="Logo-area text-center">
-                    <img
-                        src="/assets/media/common/logo2.png"
+                    <Image
+                        src={Logo}
                         alt="News Portal.com"
                         title="News Portal.com"
                         className="img-fluid"
@@ -70,7 +72,7 @@ const Header = () => {
                             {[
                                 { path: "/national", label: "জাতীয়" , },
                                 { path: "/international", label: "আন্তর্জাতিক" },
-                                { path: "/sports", label: "খেলা" },
+                                { path: "/sports", label: "খেলাধুলা" },
                                 { path: "/finance-and-trade", label: "অর্থ-বাণিজ্য" },
                                 { path: "/agriculture", label: "কৃষি" },
                                 { path: "/feature", label: "ফিচার" },
