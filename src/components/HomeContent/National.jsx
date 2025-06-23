@@ -1,6 +1,7 @@
 import React from 'react'
 import getApi from '../../../lib/getApi';
 import ScrollLink from '../../../utils/ScrollLink';
+import Image from 'next/image';
 
 let state = {};
 let state2 = [];
@@ -34,7 +35,7 @@ const National = async () => {
                         <div className="lead-news">
                             {state ?
                                 <ScrollLink href={"/details/" + state.Slug + "/" + state.ContentID}>
-                                    <picture><img src={process.env.NEXT_PUBLIC_IMG_PATH + state.ImageBgPath} alt={state.DetailsHeading} title={state.DetailsHeading} className="img-fluid img100" /></picture>
+                                    <picture> <Image src={process.env.NEXT_PUBLIC_IMG_PATH + state.ImageBgPath} alt={state.DetailsHeading} title={state.DetailsHeading}  priority placeholder={undefined} style={{ width: '100%', height: 'auto',position:"relative"}} width={800} height={450} /></picture>
                                     {state.ShowVideo === 1 || state.VideoID !== null ? <span className="play-btn-big"><i className="fas fa-play"></i></span> : ""}
                                     <h3 className="Title">{state.DetailsHeading}</h3>
                                     <div className="Brief">
@@ -54,9 +55,7 @@ const National = async () => {
                                                 <ScrollLink href={"/details/" + nc.Slug + "/" + nc.ContentID}>
                                                     <div className="row">
                                                         <div className="col-md-5 col-5">
-                                                            <picture>
-                                                                <img src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageThumbPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} className="img-fluid img100" />
-                                                            </picture>
+                                                            <picture><Image src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageSmPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} style={{ width: '100%', height: 'auto',position:"relative" }} priority  width={120} height={67} /></picture>
                                                             {nc.ShowVideo === 1 || nc.VideoID !== null ? <span className="play-btn"><i className="fas fa-play"></i></span> : ""}
                                                         </div>
                                                         <div className="col-md-7 col-7">
@@ -80,8 +79,7 @@ const National = async () => {
                                                     <div className="row">
                                                         <div className="col-md-5 col-5">
                                                             <picture>
-                                                                <img src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageSmPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} className="img-fluid img100" />
-                                                            </picture>
+                                                            <Image src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageSmPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} style={{ width: '100%', height: 'auto',position:"relative" }} priority  width={120} height={67} /></picture>
                                                             {nc.ShowVideo === 1 || nc.VideoID !== null ? <span className="play-btn"><i className="fas fa-play"></i></span> : ""}
                                                         </div>
                                                         <div className="col-md-7 col-7">

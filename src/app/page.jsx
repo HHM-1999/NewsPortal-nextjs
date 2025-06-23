@@ -6,6 +6,8 @@ import International from "@/components/HomeContent/International";
 import Sports from "@/components/HomeContent/Sports";
 import { Suspense } from "react";
 import SkeletonSection from "@/components/common/SkeletonSection";
+import Finance from "@/components/HomeContent/Finance";
+import Entertainment from "@/components/HomeContent/Entertainment";
 
 export default function Home() {
   return (
@@ -26,6 +28,12 @@ export default function Home() {
         </Suspense>
         <Suspense fallback={<SkeletonSection />}>
           <Sports />
+        </Suspense>
+        <Suspense fallback={<SkeletonSection />}>
+          <Finance />
+        </Suspense>
+        <Suspense fallback={<SkeletonSection />}>
+          <Entertainment />
         </Suspense>
       </div>
     </main>

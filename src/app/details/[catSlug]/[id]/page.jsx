@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
             description: data.DetailsHeading || "Barta24 - Trusted News",
             images: [
                 {
-                    url: ` https://cdn.barta24.com/${data.ImageSmPath}` || "barta24",
+                    url: ` https://assets.deshkalnews.com/${data.ImageSmPath}` || "barta24",
                     width: 800,
                     height: 600,
                 },
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }) {
         twitter: {
             title: data.DetailsHeading || "Barta24",
             description: data.DetailsHeading || "",
-            images: [`https://cdn.barta24.com/${data.ImageSmPath}` || "Barta24"],
+            images: [`https://assets.deshkalnews.com/${data.ImageSmPath}` || "Barta24"],
         },
 
     };
@@ -52,7 +52,7 @@ const page = async ({ params }) => {
         "@context": "https://schema.org",
         "@type": "NewsArticle",
         "headline": data[0].DetailsHeading,
-        "image": [`https://cdn.barta24.com/${data[0].ImageSmPath}`],
+        "image": [`https://assets.deshkalnews.com/${data[0].ImageSmPath}`],
         "datePublished": "",
         "author": [{
             "@type": "Organization",
@@ -63,7 +63,7 @@ const page = async ({ params }) => {
             "name": "Barta24",
             "logo": {
                 "@type": "ImageObject",
-                "url": "https://cdn.barta24.com/logo.png"
+                "url": "https://assets.deshkalnews.com/logo.png"
             }
         },
         "mainEntityOfPage": {
@@ -89,7 +89,7 @@ const page = async ({ params }) => {
                                 key={nc.ContentID}
                                 id={nc.ContentID}
                                 data-title={nc.DetailsHeading}
-                                data-image={`https://cdn.barta24.com/${nc.ImageSmPath}`}
+                                data-image={`https://assets.deshkalnews.com/${nc.ImageSmPath}`}
                             >
                                 <h1>{nc.DetailsHeading}</h1>
                                 <SocialShare title={nc.DetailsHeading} contentID={nc.ContentID} />

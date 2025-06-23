@@ -70,17 +70,17 @@ const Header = () => {
                     <div className="collapse navbar-collapse" id="mainNav">
                         <ul className="navbar-nav">
                             {[
-                                { path: "/national", label: "জাতীয়" , },
+                                { path: "/national", label: "জাতীয়" ,  },
                                 { path: "/international", label: "আন্তর্জাতিক" },
                                 { path: "/sports", label: "খেলাধুলা" },
                                 { path: "/finance-and-trade", label: "অর্থ-বাণিজ্য" },
-                                { path: "/agriculture", label: "কৃষি" },
-                                { path: "/feature", label: "ফিচার" },
                                 { path: "/entertainment", label: "বিনোদন" },
+                                { path: "/feature", label: "ফিচার" },
+                                { path: "/agriculture", label: "কৃষি" },
                                 { path: "/archieves", label: "আর্কাইভ" }
                             ].map((item, idx) => (
                                 <li className="nav-item" key={idx}>
-                                    <Link className="nav-link" href={item.path} prefetch={true}>{item.label}</Link>
+                                    <Link className="nav-link" href={item.path} prefetch={false}>{item.label}</Link>
                                 </li>
                             ))}
                         </ul>

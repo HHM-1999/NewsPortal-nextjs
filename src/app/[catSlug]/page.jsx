@@ -18,7 +18,7 @@ import Error from '../error';
 //             description: category.CategoryName || "Barta24 - Trusted News",
 //             images: [
 //                 {
-//                     url: ` https://cdn.barta24.com/${category.ImageSmPath}` || "barta24",
+//                     url: ` https://assets.deshkalnews.com/${category.ImageSmPath}` || "barta24",
 //                     width: 800,
 //                     height: 600,
 //                 },
@@ -27,7 +27,7 @@ import Error from '../error';
 //         twitter: {
 //             title: category.CategoryName || "Barta24",
 //             description: category.CategoryName || "",
-//             images: [`https://cdn.barta24.com/${category.ImageSmPath}` || "Barta24"],
+//             images: [`https://assets.deshkalnews.com/${category.ImageSmPath}` || "Barta24"],
 //         },
 //     };
 
@@ -52,8 +52,8 @@ export async function generateMetadata({ params }) {
                 images: [
                     {
                         url: category?.ImageSmPath
-                            ? `https://cdn.barta24.com/${category?.ImageSmPath}`
-                            : "https://cdn.barta24.com/default.jpg",
+                            ? `https://assets.deshkalnews.com/${category?.ImageSmPath}`
+                            : "https://assets.deshkalnews.com/default.jpg",
                         width: 800,
                         height: 600,
                     },
@@ -64,8 +64,8 @@ export async function generateMetadata({ params }) {
                 description: category?.CategoryName || "",
                 images: [
                     category?.ImageSmPath
-                        ? `https://cdn.barta24.com/${category?.ImageSmPath}`
-                        : "https://cdn.barta24.com/default.jpg",
+                        ? `https://assets.deshkalnews.com/${category?.ImageSmPath}`
+                        : "https://assets.deshkalnews.com/default.jpg",
                 ],
             },
         };

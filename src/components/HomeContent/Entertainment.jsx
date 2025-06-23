@@ -9,32 +9,33 @@ let state3 = [];
 
 async function delay(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
-}
-const International = async () => {
-    await delay(3000);
-    const list = await getApi('home-json-bn/generateCategory6.json');
+  }
+const Entertainment = async () => {
+    await delay(3000); 
+    const list = await getApi('home-json-bn/generateCategory10.json');
     state = list[0];
     state2 = list.slice(1, 4);
-    state3 = list.slice(4, 8);
+    state3 = list.slice(4, 7);
 
     return (
         <div className='container'>
-            <ScrollLink href={"/international"}>
+            <ScrollLink href={"/entertainment"}>
                 <div className="section-header">
                     <div className="section-title">
-                        <span className="shadow-text">আন্তর্জাতিক</span>
-                        <span className="main-text">আন্তর্জাতিক</span>
+                        <span className="shadow-text">বিনোদন</span>
+                        <span className="main-text">বিনোদন</span>
                         <span className="arrow">&rsaquo;</span>
                     </div>
                 </div>
             </ScrollLink>
+
             <div className="natioonal-area">
                 <div className="row">
                     <div className="col-md-5 border-right-inner2">
                         <div className="lead-news">
                             {state ?
                                 <ScrollLink href={"/details/" + state.Slug + "/" + state.ContentID}>
-                                    <picture> <Image src={process.env.NEXT_PUBLIC_IMG_PATH + state.ImageBgPath} alt={state.DetailsHeading} title={state.DetailsHeading} priority placeholder={undefined} style={{ width: '100%', height: 'auto', position: "relative" }} width={800} height={450} /></picture>
+                                    <picture><Image src={process.env.NEXT_PUBLIC_IMG_PATH + state.ImageBgPath} alt={state.DetailsHeading} title={state.DetailsHeading}  priority placeholder={undefined} style={{ width: '100%', height: 'auto',position:"relative"}} width={800} height={450} /></picture>
                                     {state.ShowVideo === 1 || state.VideoID !== null ? <span className="play-btn-big"><i className="fas fa-play"></i></span> : ""}
                                     <h3 className="Title">{state.DetailsHeading}</h3>
                                     <div className="Brief">
@@ -54,13 +55,14 @@ const International = async () => {
                                                 <ScrollLink href={"/details/" + nc.Slug + "/" + nc.ContentID}>
                                                     <div className="row">
                                                         <div className="col-md-7 col-7">
-                                                            <h3 className="Title">{nc.DetailsHeading}</h3>
-                                                        </div>
-                                                        <div className="col-md-5 col-5">
-                                                            <picture><Image src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageSmPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} style={{ width: '100%', height: 'auto', position: "relative" }} priority width={120} height={67} /></picture>
+                                                            <picture>
+                                                            <Image src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageSmPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} style={{ width: '100%', height: 'auto',position:"relative" }} priority  width={120} height={67} />
+                                                            </picture>
                                                             {nc.ShowVideo === 1 || nc.VideoID !== null ? <span className="play-btn"><i className="fas fa-play"></i></span> : ""}
                                                         </div>
-
+                                                        <div className="col-md-5 col-5">
+                                                            <h3 className="Title">{nc.DetailsHeading}</h3>
+                                                        </div>
                                                     </div>
                                                 </ScrollLink>
                                             </div>
@@ -71,26 +73,28 @@ const International = async () => {
                                 </div>
                             </div>
                             <div className="col-md-6">
-                                <div className="CatListWrap2">
+                                <div className="CatListWrap1">
                                     {state3.map((nc) => {
                                         return (
                                             <div className="Catlist" key={nc.ContentID}>
                                                 <ScrollLink href={"/details/" + nc.Slug + "/" + nc.ContentID}>
                                                     <div className="row">
                                                         <div className="col-md-7 col-7">
-                                                            <h3 className="Title">{nc.DetailsHeading}</h3>
-                                                        </div>
-                                                        <div className="col-md-5 col-5">
                                                             <picture>
-                                                                <Image src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageSmPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} style={{ width: '100%', height: 'auto', position: "relative" }} priority width={120} height={67} /></picture>
+                                                            <Image src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageSmPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} style={{ width: '100%', height: 'auto',position:"relative" }} priority  width={120} height={67} />
+                                                            </picture>
                                                             {nc.ShowVideo === 1 || nc.VideoID !== null ? <span className="play-btn"><i className="fas fa-play"></i></span> : ""}
                                                         </div>
-
+                                                        <div className="col-md-5 col-5">
+                                                            <h3 className="Title">{nc.DetailsHeading}</h3>
+                                                        </div>
                                                     </div>
                                                 </ScrollLink>
                                             </div>
                                         )
                                     })}
+
+
                                 </div>
                             </div>
                         </div>
@@ -102,4 +106,4 @@ const International = async () => {
     )
 }
 
-export default International
+export default Entertainment

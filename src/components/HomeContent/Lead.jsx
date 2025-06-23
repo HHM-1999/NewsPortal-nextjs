@@ -22,14 +22,12 @@ const Lead = async () => {
                         <div className="row">
                             <div className="col-md-7">
                                 <div className="DTopNews">
-                                    <div className="thumbnail">
                                         <Link href={"/details/" + LeadData.categorySlug + "/" + LeadData.ContentID}>
                                             <div className="DImageResize">
-                                                <Image src={process.env.NEXT_PUBLIC_IMG_PATH + LeadData.ImageBgPath} alt={LeadData.DetailsHeading} title={LeadData.DetailsHeading}  priority="true" placeholder={undefined} style={{ width: '100%', height: 'auto',position:"relative",aspectRatio: "1.78"}} width={800} height={450} /></div>
+                                                <Image src={process.env.NEXT_PUBLIC_IMG_PATH + LeadData.ImageBgPath} alt={LeadData.DetailsHeading} title={LeadData.DetailsHeading}  priority placeholder={undefined} style={{ width: '100%', height: 'auto',position:"relative"}} width={800} height={450} /></div>
                                             <div className="caption">
                                                 <h3>{LeadData.DetailsHeading}</h3></div>
                                         </Link>
-                                    </div>
                                 </div>
                             </div>
                             <div className="col-md-5">
@@ -40,7 +38,7 @@ const Lead = async () => {
                                                 <Link href={"/details/" + nc.categorySlug + "/" + nc.ContentID}>
                                                     <div className="row">
                                                         <div className="col-md-5 col-5">
-                                                            <picture><Image src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageSmPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} style={{ width: '100%', height: 'auto',position:"relative" }} priority="true"  width={120} height={67} /></picture>
+                                                            <picture><Image src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageSmPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} style={{ width: '100%', height: 'auto',position:"relative" }} priority  width={120} height={67} /></picture>
                                                         </div>
                                                         <div className="col-md-7 col-7">
                                                             <h3 className="Title">{nc.DetailsHeading}</h3>
@@ -56,7 +54,7 @@ const Lead = async () => {
                     </div>
                     <div className="col-lg-3">
                         <div className="Advertisement">
-                            <Image src={Ads} alt="Radhuni" unoptimized title='radhuni' priority="true" />
+                            <Image src={Ads} alt="Radhuni" unoptimized title='radhuni' priority />
                         </div>
                     </div>
                 </div>
