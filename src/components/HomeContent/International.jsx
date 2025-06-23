@@ -1,23 +1,28 @@
 import React from 'react'
-import getApi from '../../lib/getApi';
-import ScrollLink from '../../utils/ScrollLink';
+import getApi from '../../../lib/getApi';
+import ScrollLink from '../../../utils/ScrollLink';
 
 let state = {};
 let state2 = [];
 let state3 = [];
-const National = async () => {
-    const list = await getApi('home-json-bn/generateCategory1.json');
+
+async function delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+const International = async () => {
+    await delay(3000); 
+    const list = await getApi('home-json-bn/generateCategory6.json');
     state = list[0];
-    state2 = list.slice(1, 5);
-    state3 = list.slice(5, 9);
+    state2 = list.slice(1, 4);
+    state3 = list.slice(4, 8);
 
     return (
         <div className='container'>
-            <ScrollLink href={"/national"}>
+            <ScrollLink href={"/international"}>
                 <div className="section-header">
                     <div className="section-title">
-                        <span className="shadow-text">জাতীয়</span>
-                        <span className="main-text">জাতীয়</span>
+                        <span className="shadow-text">আন্তর্জাতিক</span>
+                        <span className="main-text">আন্তর্জাতিক</span>
                         <span className="arrow">&rsaquo;</span>
                     </div>
                 </div>
@@ -48,13 +53,13 @@ const National = async () => {
                                             <div className="Catlist" key={nc.ContentID}>
                                                 <ScrollLink href={"/details/" + nc.Slug + "/" + nc.ContentID}>
                                                     <div className="row">
-                                                        <div className="col-md-5 col-5">
+                                                        <div className="col-md-7 col-7">
                                                             <picture>
-                                                                <img src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageThumbPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} className="img-fluid img100" />
+                                                                <img src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageSmPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} className="img-fluid img100" />
                                                             </picture>
                                                             {nc.ShowVideo === 1 || nc.VideoID !== null ? <span className="play-btn"><i className="fas fa-play"></i></span> : ""}
                                                         </div>
-                                                        <div className="col-md-7 col-7">
+                                                        <div className="col-md-5 col-5">
                                                             <h3 className="Title">{nc.DetailsHeading}</h3>
                                                         </div>
                                                     </div>
@@ -73,13 +78,13 @@ const National = async () => {
                                             <div className="Catlist" key={nc.ContentID}>
                                                 <ScrollLink href={"/details/" + nc.Slug + "/" + nc.ContentID}>
                                                     <div className="row">
-                                                        <div className="col-md-5 col-5">
+                                                        <div className="col-md-7 col-7">
                                                             <picture>
                                                                 <img src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageSmPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} className="img-fluid img100" />
                                                             </picture>
                                                             {nc.ShowVideo === 1 || nc.VideoID !== null ? <span className="play-btn"><i className="fas fa-play"></i></span> : ""}
                                                         </div>
-                                                        <div className="col-md-7 col-7">
+                                                        <div className="col-md-5 col-5">
                                                             <h3 className="Title">{nc.DetailsHeading}</h3>
                                                         </div>
                                                     </div>
@@ -99,4 +104,4 @@ const National = async () => {
     )
 }
 
-export default National
+export default International

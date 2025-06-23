@@ -1,9 +1,14 @@
 import React from 'react'
-import getApi from '../../lib/getApi';
+import getApi from '../../../lib/getApi';
 import Link from 'next/link';
+
+async function delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 let LeadData = [];
 const SpecialLead = async () => {
+    await delay(3000); 
     const list = await getApi('home-json-bn/generateSpecialTopOne.json');
     LeadData = list.slice(0, 4);
     return (

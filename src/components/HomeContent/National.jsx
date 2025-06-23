@@ -1,23 +1,28 @@
 import React from 'react'
-import getApi from '../../lib/getApi';
-import ScrollLink from '../../utils/ScrollLink';
+import getApi from '../../../lib/getApi';
+import ScrollLink from '../../../utils/ScrollLink';
 
 let state = {};
 let state2 = [];
 let state3 = [];
-const Sports = async () => {
-    const list = await getApi('home-json-bn/generateCategory6.json');
+async function delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+const National = async () => {
+   await delay(3000); 
+
+    const list = await getApi('home-json-bn/generateCategory1.json');
     state = list[0];
-    state2 = list.slice(1, 4);
-    state3 = list.slice(4, 8);
+    state2 = list.slice(1, 5);
+    state3 = list.slice(5, 9);
 
     return (
         <div className='container'>
-            <ScrollLink href={"/sports"}>
+            <ScrollLink href={"/national"}>
                 <div className="section-header">
                     <div className="section-title">
-                        <span className="shadow-text">খেলাধুলা</span>
-                        <span className="main-text">খেলাধুলা</span>
+                        <span className="shadow-text">জাতীয়</span>
+                        <span className="main-text">জাতীয়</span>
                         <span className="arrow">&rsaquo;</span>
                     </div>
                 </div>
@@ -32,9 +37,9 @@ const Sports = async () => {
                                     <picture><img src={process.env.NEXT_PUBLIC_IMG_PATH + state.ImageBgPath} alt={state.DetailsHeading} title={state.DetailsHeading} className="img-fluid img100" /></picture>
                                     {state.ShowVideo === 1 || state.VideoID !== null ? <span className="play-btn-big"><i className="fas fa-play"></i></span> : ""}
                                     <h3 className="Title">{state.DetailsHeading}</h3>
-                                    {/* <div className="Brief">
+                                    <div className="Brief">
                                         <p>{state.ContentBrief}</p>
-                                    </div> */}
+                                    </div>
                                 </ScrollLink>
                                 : " "}
                         </div>
@@ -48,20 +53,22 @@ const Sports = async () => {
                                             <div className="Catlist" key={nc.ContentID}>
                                                 <ScrollLink href={"/details/" + nc.Slug + "/" + nc.ContentID}>
                                                     <div className="row">
-                                                        <div className="col-md-7 col-7">
-                                                            <h3 className="Title">{nc.DetailsHeading}</h3>
-                                                        </div>
                                                         <div className="col-md-5 col-5">
                                                             <picture>
                                                                 <img src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageThumbPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} className="img-fluid img100" />
                                                             </picture>
                                                             {nc.ShowVideo === 1 || nc.VideoID !== null ? <span className="play-btn"><i className="fas fa-play"></i></span> : ""}
                                                         </div>
+                                                        <div className="col-md-7 col-7">
+                                                            <h3 className="Title">{nc.DetailsHeading}</h3>
+                                                        </div>
                                                     </div>
                                                 </ScrollLink>
                                             </div>
                                         )
                                     })}
+
+
                                 </div>
                             </div>
                             <div className="col-md-6">
@@ -71,14 +78,14 @@ const Sports = async () => {
                                             <div className="Catlist" key={nc.ContentID}>
                                                 <ScrollLink href={"/details/" + nc.Slug + "/" + nc.ContentID}>
                                                     <div className="row">
-                                                        <div className="col-md-7 col-7">
-                                                            <h3 className="Title">{nc.DetailsHeading}</h3>
-                                                        </div>
                                                         <div className="col-md-5 col-5">
                                                             <picture>
                                                                 <img src={process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageSmPath} alt={nc.DetailsHeading} title={nc.DetailsHeading} className="img-fluid img100" />
                                                             </picture>
                                                             {nc.ShowVideo === 1 || nc.VideoID !== null ? <span className="play-btn"><i className="fas fa-play"></i></span> : ""}
+                                                        </div>
+                                                        <div className="col-md-7 col-7">
+                                                            <h3 className="Title">{nc.DetailsHeading}</h3>
                                                         </div>
                                                     </div>
                                                 </ScrollLink>
@@ -97,4 +104,4 @@ const Sports = async () => {
     )
 }
 
-export default Sports
+export default National

@@ -1,13 +1,16 @@
 import React from 'react';
-import getApi from '../../lib/getApi';
+import getApi from '../../../lib/getApi';
 import Link from 'next/link';
 import Image from 'next/image';
-import Ads from '../assets/media/advertisement/13982910857184178936.gif'
+import Ads from '../../assets/media/advertisement/13982910857184178936.gif'
 
 let LeadData = {};
 let LeadData2 = [];
+async function delay(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
 const Lead = async () => {
-
+    await delay(3000);
     const list = await getApi('home-json-bn/generateLead.json');
     LeadData = list[0];
     LeadData2 = list.slice(1, 4);
