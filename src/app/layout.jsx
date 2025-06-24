@@ -30,6 +30,11 @@ export const metadata = {
     default: "NewsPortal",
   },
   description: "NewsPortal - Breaking News, Latest Headlines & More",
+  robots: {
+    index: false,
+    follow: false,
+  },
+
 };
 
 // Root layout
@@ -37,6 +42,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="bn" className={`${tiroBangla.variable}`}>
       <head>
+        <meta name="robots" content="noindex, nofollow" />
+
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
           rel="stylesheet"

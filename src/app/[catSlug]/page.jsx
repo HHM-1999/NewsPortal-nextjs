@@ -1,10 +1,10 @@
-import Header from '@/components/Header';
 import React from 'react'
 import getApi from '../../../lib/getApi';
 import postApi from '../../../lib/postApi';
 import Link from 'next/link';
 import LoadMoreNews from './LoadMoreNews';
-import Error from '../error';
+
+
 
 // export async function generateMetadata({ params }) {
 //     const { catSlug } = await params;
@@ -40,6 +40,7 @@ export async function generateMetadata({ params }) {
         const category = CategoryList?.category;
 
         if (!category) {
+            
             ""
         }
 
