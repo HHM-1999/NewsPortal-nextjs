@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import Lead from "@/components/HomeContent/Lead";
 import styles from "./page.module.css";
 import SpecialLead from "@/components/HomeContent/SpecialLead";
@@ -8,6 +10,8 @@ import { Suspense } from "react";
 import SkeletonSection from "@/components/common/SkeletonSection";
 import Finance from "@/components/HomeContent/Finance";
 import Entertainment from "@/components/HomeContent/Entertainment";
+import Education from "@/components/HomeContent/Education";
+import LifeStyle from "@/components/HomeContent/LifeStyle";
 
 export default function Home() {
   return (
@@ -34,6 +38,12 @@ export default function Home() {
         </Suspense>
         <Suspense fallback={<SkeletonSection />}>
           <Entertainment />
+        </Suspense>
+        <Suspense fallback={<SkeletonSection />}>
+          <Education />
+        </Suspense>
+        <Suspense fallback={<SkeletonSection />}>
+          <LifeStyle />
         </Suspense>
       </div>
     </main>

@@ -44,24 +44,24 @@ const Header = () => {
                 </div>
             </div>
             <div className={isSticky ? "sticky-navbar shadow-sm" : ""}>
-            {/* Logo center */}
-            <Link href="/">
-                <div className="Logo-area text-center">
-                    <Image
-                        src={Logo}
-                        alt="News Portal.com"
-                        title="News Portal.com"
-                        className="img-fluid"
-                        style={{ width: "270px" }}
-                    />
-                </div>
-            </Link>
+                {/* Logo center */}
+                <Link href="/">
+                    <div className="Logo-area text-center">
+                        <Image
+                            src={Logo}
+                            alt="News Portal.com"
+                            title="News Portal.com"
+                            className="img-fluid"
+                            style={{ width: "270px" }}
+                        />
+                    </div>
+                </Link>
 
 
-            {/* Navbar */}
-            {/* <div className="row">
+                {/* Navbar */}
+                {/* <div className="row">
                 <div className="col-lg-12"> */}
-            
+
                 <nav className="navbar navbar-expand-lg navbar-light bg-white">
                     {/* <div className="container"> */}
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
@@ -70,14 +70,16 @@ const Header = () => {
                     <div className="collapse navbar-collapse" id="mainNav">
                         <ul className="navbar-nav">
                             {[
-                                { path: "/national", label: "জাতীয়" ,  },
+                                { path: "/national", label: "জাতীয়", },
                                 { path: "/international", label: "আন্তর্জাতিক" },
                                 { path: "/sports", label: "খেলাধুলা" },
                                 { path: "/finance-and-trade", label: "অর্থ-বাণিজ্য" },
                                 { path: "/entertainment", label: "বিনোদন" },
                                 { path: "/feature", label: "ফিচার" },
-                                { path: "/agriculture", label: "কৃষি" },
-                                { path: "/archieves", label: "আর্কাইভ" }
+                                { path: "/education", label: "শিক্ষা" },
+                                { path: "/lifestyle", label: "লাইফস্টাইল" },
+                                { path: "/archieves", label: "আর্কাইভ" },
+
                             ].map((item, idx) => (
                                 <li className="nav-item" key={idx}>
                                     <Link className="nav-link" href={item.path} prefetch={false}>{item.label}</Link>
