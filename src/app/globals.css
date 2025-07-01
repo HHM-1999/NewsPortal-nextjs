@@ -429,6 +429,9 @@ label {
   position: relative;
   top: -2px;
 }
+.lead-news a{
+  text-decoration: none;
+}
 
 .lead-news .Title {
   font-size: 22px;
@@ -515,6 +518,11 @@ figcaption {
 	font-family: var(--font-tiro-bangla) !important;
 	font-weight: 600 !important;
   border-bottom: 5px solid #ddd !important;
+}
+#contentDetails ul li span {
+	font-family: SolaimanLipi !important;
+	font-size: 17px !important;
+	line-height: 27px !important;
 }
 /* globals.css or a dedicated CSS module */
 

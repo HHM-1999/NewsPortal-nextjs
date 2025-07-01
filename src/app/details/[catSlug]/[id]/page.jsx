@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
 import getApi from "../../../../../lib/getApi";
 import DynamicMetadataClient from "./DynamicMetadataClient";
 import SocialShare from "./SocialShare";
 import Head from "next/head";
 import ImageWithShimmerClient from "./ImageWithShimmerClient";
+import Image from "next/image";
+import SkeletonSection from "@/components/common/SkeletonSection";
 
 export async function generateMetadata({ params }) {
     const { id } = await params;
@@ -79,8 +81,8 @@ const page = async ({ params }) => {
     return (
         <>
             <Head><script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             </Head>
             <div className="container" style={{ padding: "20px" }}>
                 <DynamicMetadataClient />
@@ -139,12 +141,22 @@ const page = async ({ params }) => {
                                         ) : null}
                                     </div>
                                 ) : (
-                                    <ImageWithShimmerClient // <--- Use the new Client Component here
-                                        src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`}
-                                        alt={nc.DetailsHeading}
-                                        title={nc.DetailsHeading}
-                                        caption={nc.ImageBgPathCaption}
-                                    />
+                                    // <ImageWithShimmerClient // <--- Use the new Client Component here
+                                    //     src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`}
+                                    //     alt={nc.DetailsHeading}
+                                    //     title={nc.DetailsHeading}
+                                    //     caption={nc.ImageBgPathCaption}
+                                    // />
+                                    <Suspense fallback={<SkeletonSection />}>
+                                        <picture>
+                                            <Image src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`}
+                                                alt={nc.DetailsHeading} title={nc.DetailsHeading}
+                                                width={400}
+                                                height={250}
+                                                style={{ width: '100%', height: 'auto', objectFit: 'cover', position: "relative" }} />
+                                        </picture>
+                                    </Suspense>
+
                                 )}
 
                                 <div
