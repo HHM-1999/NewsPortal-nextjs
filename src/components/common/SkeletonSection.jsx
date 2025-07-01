@@ -5,7 +5,6 @@ export default function SkeletonSection() {
     return (
         <div className="container">
             <div className="skeleton-section">
-                <div className="skeleton-header"></div>
                 <div className="skeleton-grid">
                     {[...Array(3)].map((_, i) => (
                         <div key={i} className="skeleton-card">
