@@ -4,7 +4,7 @@
     background: #f6f7f8; 
     background: linear-gradient(to right, #f6f7f8 0%, #edeef0 20%, #f6f7f8 40%);
     background-size: 1000px 100%;
-    animation: shimmer 3s infinite linear;
+    animation: shimmer 15s infinite linear;
     width: 100%;
     height: auto;
     min-height: 250px; 

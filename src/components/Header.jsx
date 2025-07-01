@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import Logo from '../assets/media/common/logo2.png'
 import Image from 'next/image';
+import ScrollLink from '../../utils/ScrollLink';
 
 const Header = () => {
     const [isSticky, setIsSticky] = useState(false);
@@ -82,8 +83,16 @@ const Header = () => {
 
                             ].map((item, idx) => (
                                 <li className="nav-item" key={idx}>
-                                    <Link className="nav-link" href={item.path} prefetch={false}>{item.label}</Link>
+                                    <ScrollLink
+                                        className="nav-link"
+                                        href={item.path}
+                                        prefetch="false"
+                                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                                    >
+                                        {item.label}
+                                    </ScrollLink>
                                 </li>
+
                             ))}
                         </ul>
 

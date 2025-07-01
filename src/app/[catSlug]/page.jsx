@@ -3,6 +3,7 @@ import getApi from '../../../lib/getApi';
 import postApi from '../../../lib/postApi';
 import Link from 'next/link';
 import LoadMoreNews from './LoadMoreNews';
+import Image from 'next/image';
 
 export async function generateMetadata({ params }) {
     const { catSlug } = await params;
@@ -106,7 +107,7 @@ const CategoryPage = async ({ params }) => {
                                         <Link href={`/details/${nc.Slug}/${nc.ContentID}`}>
                                             <div className="card mb-3 mt-3">
                                                 <Suspense fallback={<div className="skeleton shimmer" style={{ height: '250px', width: '100%' }}></div>}>
-                                                    <img src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`} className="card-img-top img-fluid" alt={nc.DetailsHeading} title={nc.DetailsHeading} priority="true" />
+                                                    <Image src={`${process.env.NEXT_PUBLIC_IMG_PATH + nc.ImageBgPath}`} className="card-img-top img-fluid" width={400} height={500} alt={nc.DetailsHeading} title={nc.DetailsHeading} priority />
                                                 </Suspense>
                                                 <div className="card-body">
                                                     <h5>{nc.DetailsHeading}</h5>

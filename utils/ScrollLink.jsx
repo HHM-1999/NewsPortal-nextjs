@@ -1,15 +1,20 @@
-'use client';
+"use client";
+import { useRouter } from 'next/navigation';
 
-import Link from 'next/link';
+const ScrollLink = ({ href, children, ...props }) => {
+    const router = useRouter();
 
-export default function ScrollLink({ href, children, className = '' }) {
-  const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+    const handleClick = (e) => {
+        e.preventDefault();
+        router.push(href);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
-  return (
-    <Link href={href} onClick={handleClick} className={className} style={{ textDecoration: 'none' }}>
-        {children}
-    </Link>
-  );
-}
+    return (
+        <a href={href} onClick={handleClick} {...props}>
+            {children}
+        </a>
+    );
+};
+
+export default ScrollLink;
