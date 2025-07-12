@@ -1,6 +1,6 @@
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -10,7 +10,7 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 /* html,
 body {
@@ -448,6 +448,7 @@ label {
   overflow: hidden;
   text-overflow: ellipsis;
   color: #333;
+  font-family: var(--font-tiro-bangla);
 }
 
 .lead-news {
@@ -595,6 +596,7 @@ figcaption {
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: var(--font-tiro-bangla);
 }
 
 .category-area .col-lg-6 a {

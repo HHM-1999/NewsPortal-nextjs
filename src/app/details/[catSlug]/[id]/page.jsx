@@ -3,7 +3,7 @@ import getApi from "../../../../../lib/getApi";
 import DynamicMetadataClient from "./DynamicMetadataClient";
 import SocialShare from "./SocialShare";
 import Head from "next/head";
-import ImageWithShimmerClient from "./ImageWithShimmerClient";
+// import ImageWithShimmerClient from "./ImageWithShimmerClient";
 import Image from "next/image";
 import SkeletonSection from "@/components/common/SkeletonSection";
 

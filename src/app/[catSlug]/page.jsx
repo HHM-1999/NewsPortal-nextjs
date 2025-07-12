@@ -4,52 +4,8 @@ import postApi from '../../../lib/postApi';
 import Link from 'next/link';
 import LoadMoreNews from './LoadMoreNews';
 import Image from 'next/image';
+import Head from 'next/head';
 
-export async function generateMetadata({ params }) {
-    const { catSlug } = await params;
-
-    try {
-        const CategoryList = await getApi(`category/${catSlug}`);
-        const category = CategoryList?.category;
-
-        if (!category) {
-            ""
-        }
-
-        return {
-            title: category?.CategoryName || "Category - Barta24",
-            description: category?.CategoryName || "Read full news on Barta24.",
-            openGraph: {
-                title: category?.CategoryName || "Barta24 News",
-                description: category?.CategoryName || "Barta24 - Trusted News",
-                images: [
-                    {
-                        url: category?.ImageSmPath
-                            ? `https://assets.deshkalnews.com/${category?.ImageSmPath}`
-                            : "https://assets.deshkalnews.com/default.jpg",
-                        width: 800,
-                        height: 600,
-                    },
-                ],
-            },
-            twitter: {
-                title: category?.CategoryName || "Barta24",
-                description: category?.CategoryName || "",
-                images: [
-                    category?.ImageSmPath
-                        ? `https://assets.deshkalnews.com/${category?.ImageSmPath}`
-                        : "https://assets.deshkalnews.com/default.jpg",
-                ],
-            },
-        };
-    } catch (error) {
-        console.error("Error generating metadata for catSlug:", catSlug, error);
-        return {
-            title: "Category - Barta24",
-            description: "Read full news on Barta24.",
-        };
-    }
-}
 
 var limit = 8
 var offset = 0
@@ -92,6 +48,7 @@ const CategoryPage = async ({ params }) => {
                     100% { background-position: 1000px 0; }
                 }
             `}</style>
+
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12 mt-3">

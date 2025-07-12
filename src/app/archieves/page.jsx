@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import postApi from "../../../lib/postApi";
 import ArchiveClient from "./ArchiveClient";
 import getApi from "../../../lib/getApi";

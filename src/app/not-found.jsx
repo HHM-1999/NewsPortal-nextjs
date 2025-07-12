@@ -1,4 +1,5 @@
 // app/not-found.jsx
+
 export default function NotFound() {
     return (
       <div className="text-center my-10">
